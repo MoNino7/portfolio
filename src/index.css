@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&family=Courier+Prime&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-press-start: "Press Start 2P", system-ui, sans-serif;
+  --font-vt323: "VT323", monospace;
+  --font-silkscreen: "Silkscreen", sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+}
+
+/* Base resets, wallpaper & retro feels */
+body {
+  margin: 0;
+  background-color: #1e1e2e;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(203, 166, 247, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(137, 180, 250, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(166, 227, 161, 0.03) 0%, transparent 60%);
+  color: #cdd6f4;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  overflow: hidden; /* Desktop is a single-screen shell */
+  font-family: var(--font-vt323), monospace;
+  font-size: 20px;
+}
+
+/* CRT Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* Subtle desktop grid */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 79px,
+      rgba(255, 255, 255, 0.02) 79px,
+      rgba(255, 255, 255, 0.02) 80px
+    );
+}
+
+/* Custom focus ring for high accessibility */
+:focus-visible {
+  outline: 4px solid #f5c2e7 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px #11111b !important;
+}
+
+/* Custom retro-styled scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #11111b;
+  border: 2px solid #313244;
+}
+::-webkit-scrollbar-thumb {
+  background: #313244;
+  border: 2px solid #11111b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #45475a;
+}

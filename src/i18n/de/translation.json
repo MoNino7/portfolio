@@ -1,0 +1,36 @@
+{
+  "app": {
+    "name": "Retro Portfolio OS",
+    "loading": "System wird gestartet...",
+    "error": "Ein Fehler ist aufgetreten"
+  },
+  "desktop": {
+    "about": "Über Mich",
+    "projects": "Projekte",
+    "skills": "Fähigkeiten",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "settings": "Einstellungen",
+    "memory": "Memory-Spiel"
+  },
+  "window": {
+    "close": "Fenster schließen",
+    "minimize": "Fenster minimieren",
+    "maximize": "Fenster maximieren",
+    "restore": "Fenster wiederherstellen",
+    "drag": "Fenster ziehen"
+  },
+  "dialog": {
+    "greeting": "Willkommen in meinem Portfolio!",
+    "intro": "Ich bin Frontend-Ingenieur spezialisiert auf React, TypeScript und barrierefreie UI. Erkunde meinen Desktop, um mehr über mich zu erfahren.",
+    "continue": "Weiter",
+    "skip": "Einführung überspringen"
+  },
+  "a11y": {
+    "desktop": "Desktop mit Anwendungs-Icons. Nutze die Pfeiltasten zur Navigation.",
+    "taskbar": "Taskleiste mit geöffneten Fenstern und Systemsteuerung.",
+    "windowContent": "Hauptbereich des {{windowName}}-Fensters.",
+    "iconDescription": "Öffne die {{appName}}-Anwendung",
+    "dialogInstruction": "Drücke Enter, um den Dialog fortzusetzen, oder nutze den Überspringen-Button."
+  }
+}

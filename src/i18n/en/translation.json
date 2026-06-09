@@ -1,0 +1,36 @@
+{
+  "app": {
+    "name": "Retro Portfolio OS",
+    "loading": "Booting system...",
+    "error": "An error occurred"
+  },
+  "desktop": {
+    "about": "About Me",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "blog": "Blog",
+    "settings": "Settings",
+    "memory": "Memory Game"
+  },
+  "window": {
+    "close": "Close window",
+    "minimize": "Minimize window",
+    "maximize": "Maximize window",
+    "restore": "Restore window",
+    "drag": "Drag window"
+  },
+  "dialog": {
+    "greeting": "Welcome to my portfolio!",
+    "intro": "I'm a frontend engineer specialized in React, TypeScript, and accessible UI. Explore my desktop to learn more about me.",
+    "continue": "Continue",
+    "skip": "Skip introduction"
+  },
+  "a11y": {
+    "desktop": "Desktop with application icons. Use arrow keys to navigate.",
+    "taskbar": "Taskbar with open windows and system controls.",
+    "windowContent": "Main content area of {{windowName}} window.",
+    "iconDescription": "Open {{appName}} application",
+    "dialogInstruction": "Press Enter to continue the dialogue, or use the Skip button to close."
+  }
+}
