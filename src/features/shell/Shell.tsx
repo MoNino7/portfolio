@@ -7,6 +7,11 @@ import { useWindowManager } from '../../core/context/WindowContext'
 import { DialogBox } from '../visual-novel/DialogBox'
 import { introDialogNodes } from '../visual-novel/introStory'
 import { MemoryGame } from '../memory-game/MemoryGame'
+import { PacManWallpaper } from './PacManWallpaper'
+import { AboutWindow } from '../desktop/AboutWindow'
+import { SkillsWindow } from '../desktop/SkillsWindow'
+import { ProjectsWindow } from '../desktop/ProjectsWindow'
+import { ContactWindow } from '../desktop/ContactWindow'
 
 function Shell() {
   const { t } = useTranslation()
@@ -24,6 +29,21 @@ function Shell() {
     { id: 'memory', labelKey: 'desktop.memory', icon: '\u{1F3AE}', app: 'memory' },
   ]
 
+  const getDefaultSize = (app: string) => {
+    switch (app) {
+      case 'skills':
+        return { width: 900, height: 600 }
+      case 'projects':
+        return { width: 750, height: 500 }
+      case 'memory':
+        return { width: 620, height: 620 }
+      case 'about':
+        return { width: 700, height: 480 }
+      default:
+        return { width: 600, height: 400 }
+    }
+  }
+
   const handleIconClick = (id: string, label: string, icon: string, app: string) => {
     openWindow({
       id,
@@ -31,7 +51,7 @@ function Shell() {
       icon,
       app,
       position: { x: 50 + windows.length * 30, y: 50 + windows.length * 30 },
-      size: { width: 600, height: 400 },
+      size: getDefaultSize(app),
     })
   }
 
@@ -42,6 +62,7 @@ function Shell() {
 
   return (
     <div className="flex h-full w-full flex-col">
+      <PacManWallpaper />
       <div className="flex flex-1 flex-col overflow-hidden">
         {showIntro && (
           <div
@@ -103,52 +124,18 @@ function Shell() {
 function AppContent({ app }: { app: string }) {
   switch (app) {
     case 'about':
-      return <AboutContent />
+      return <AboutWindow />
     case 'skills':
-      return <SkillsContent />
+      return <SkillsWindow />
+    case 'projects':
+      return <ProjectsWindow />
     case 'contact':
-      return <ContactContent />
+      return <ContactWindow />
     case 'memory':
       return <MemoryGame />
     default:
       return <p>Content coming soon...</p>
   }
-}
-
-function AboutContent() {
-  return (
-    <div>
-      <h2 className="text-lg font-bold" style={{ fontFamily: "'Silkscreen', sans-serif" }}>About Me</h2>
-      <p className="mt-2">
-        Frontend engineer specialized in React, TypeScript, and accessible UI. I build pixel-perfect,
-        performant, and inclusive web experiences with a retro twist.
-      </p>
-    </div>
-  )
-}
-
-function SkillsContent() {
-  return (
-    <div>
-      <h2 className="text-lg font-bold" style={{ fontFamily: "'Silkscreen', sans-serif" }}>Skills</h2>
-      <ul className="mt-2 list-inside list-disc">
-        <li>React / Next.js / TypeScript</li>
-        <li>Tailwind CSS, CSS-in-JS</li>
-        <li>XState, Zustand</li>
-        <li>WCAG 2.1 AA/AAA</li>
-        <li>Vite, Vitest, Playwright</li>
-      </ul>
-    </div>
-  )
-}
-
-function ContactContent() {
-  return (
-    <div>
-      <h2 className="text-lg font-bold" style={{ fontFamily: "'Silkscreen', sans-serif" }}>Contact</h2>
-      <p className="mt-2">Reach out via the form or find me on GitHub.</p>
-    </div>
-  )
 }
 
 export default Shell

@@ -42,7 +42,8 @@ export function Window({ win, children }: { win: WindowState; children?: ReactNo
     onMove: (pos) => moveWindow(win.id, pos),
   })
 
-  const handleMouseDown = useCallback(() => {
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (e.target !== e.currentTarget) return
     focusWindow(win.id)
   }, [focusWindow, win.id])
 

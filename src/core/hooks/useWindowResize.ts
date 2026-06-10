@@ -18,6 +18,15 @@ export function useWindowResize({ position, size, minSize, onResize, onMove }: R
     startSize: Size
     direction: ResizeDirection
   } | null>(null)
+  const positionRef = useRef(position)
+  const sizeRef = useRef(size)
+  const onResizeRef = useRef(onResize)
+  const onMoveRef = useRef(onMove)
+
+  positionRef.current = position
+  sizeRef.current = size
+  onResizeRef.current = onResize
+  onMoveRef.current = onMove
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -25,6 +34,7 @@ export function useWindowResize({ position, size, minSize, onResize, onMove }: R
       const { startMouse, startPos, startSize, direction } = resizeRef.current
       const dx = e.clientX - startMouse.x
       const dy = e.clientY - startMouse.y
+      const { width: minW, height: minH } = minSize
 
       let newWidth = startSize.width
       let newHeight = startSize.height
@@ -32,37 +42,37 @@ export function useWindowResize({ position, size, minSize, onResize, onMove }: R
       let newY = startPos.y
 
       if (direction.includes('e')) {
-        newWidth = Math.max(minSize.width, startSize.width + dx)
+        newWidth = Math.max(minW, startSize.width + dx)
       }
       if (direction.includes('w')) {
-        const potentialWidth = Math.max(minSize.width, startSize.width - dx)
+        const potentialWidth = Math.max(minW, startSize.width - dx)
         const actualDx = startSize.width - potentialWidth
         newWidth = potentialWidth
         newX = startPos.x + actualDx
       }
       if (direction.includes('s')) {
-        newHeight = Math.max(minSize.height, startSize.height + dy)
+        newHeight = Math.max(minH, startSize.height + dy)
       }
       if (direction.includes('n')) {
-        const potentialHeight = Math.max(minSize.height, startSize.height - dy)
+        const potentialHeight = Math.max(minH, startSize.height - dy)
         const actualDy = startSize.height - potentialHeight
         newHeight = potentialHeight
         newY = startPos.y + actualDy
       }
 
-      onResize({ width: newWidth, height: newHeight })
-      if (newX !== position.x || newY !== position.y) {
-        onMove({ x: newX, y: newY })
+      onResizeRef.current({ width: newWidth, height: newHeight })
+      if (newX !== positionRef.current.x || newY !== positionRef.current.y) {
+        onMoveRef.current({ x: newX, y: newY })
       }
     },
-    [minSize, onMove, onResize, position],
+    [minSize],
   )
 
   const handleMouseUp = useCallback(() => {
     resizeRef.current = null
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseUp)
-  }, [handleMouseMove])
+  }, [])
 
   const onResizeStart = useCallback(
     (direction: ResizeDirection) => (e: React.MouseEvent) => {
@@ -70,14 +80,14 @@ export function useWindowResize({ position, size, minSize, onResize, onMove }: R
       e.stopPropagation()
       resizeRef.current = {
         startMouse: { x: e.clientX, y: e.clientY },
-        startPos: { x: position.x, y: position.y },
-        startSize: { width: size.width, height: size.height },
+        startPos: { x: positionRef.current.x, y: positionRef.current.y },
+        startSize: { width: sizeRef.current.width, height: sizeRef.current.height },
         direction,
       }
       document.addEventListener('mousemove', handleMouseMove)
       document.addEventListener('mouseup', handleMouseUp)
     },
-    [handleMouseMove, handleMouseUp, position, size],
+    [],
   )
 
   useEffect(() => {
@@ -85,7 +95,7 @@ export function useWindowResize({ position, size, minSize, onResize, onMove }: R
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [handleMouseMove, handleMouseUp])
+  }, [])
 
   return { onResizeStart }
 }

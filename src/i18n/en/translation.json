@@ -21,8 +21,6 @@
     "drag": "Drag window"
   },
   "dialog": {
-    "greeting": "Welcome to my portfolio!",
-    "intro": "I'm a frontend engineer specialized in React, TypeScript, and accessible UI. Explore my desktop to learn more about me.",
     "continue": "Continue",
     "skip": "Skip introduction"
   },

@@ -1,23 +1,27 @@
 import { createDialogNode, type DialogNode } from '../../core/stores/dialogMachine'
 
 export const introDialogNodes: DialogNode[] = [
-  createDialogNode('greeting', 'Welcome, explorer...', {
+  createDialogNode('greeting', 'Initialisiere Profil... Mohamad Nour Hallak.', {
     speaker: 'System',
     onComplete: 'intro_1',
   }),
-  createDialogNode('intro_1', 'You have entered the Retro Portfolio — a digital realm where code meets pixel art.', {
+  createDialogNode('intro_1', 'TH Köln — Technische Informatik. Regelstudienzeit verkürzt. Bachelorabschluss steht kurz bevor.', {
     speaker: 'System',
     onComplete: 'intro_2',
   }),
-  createDialogNode('intro_2', 'I am a Frontend Engineer who builds accessible, performant, and beautifully crafted web experiences.', {
+  createDialogNode('intro_2', 'Du Intressierst dich für mein Portfolio. Cool. Hier ein paar Fakten über mich.', {
     speaker: 'System',
     onComplete: 'intro_3',
   }),
-  createDialogNode('intro_3', 'Feel free to explore the desktop. Open any icon to learn more about my skills, projects, and how to reach me.', {
+  createDialogNode('intro_3', 'Ich bin -_- Jahre Alt und..', {
     speaker: 'System',
-    onComplete: 'intro_complete',
+    onComplete: 'intro_4',
   }),
-  createDialogNode('intro_complete', 'Enjoy your stay! 🎮', {
+  createDialogNode('intro_4', 'Ach Klicke dich im Desktop rum. Da ist viel Interessantes für dich.', {
+    speaker: 'System',
+    onComplete: 'intro_5',
+  }),
+  createDialogNode('intro_complete', 'Desktop freigegeben. Viel Erfolg.', {
     speaker: 'System',
   }),
 ]
