@@ -112,16 +112,57 @@ export function AboutWindow() {
         )}
 
         {activeTab === 'education' && (
-          <div className="space-y-4 animate-fade-in overflow-y-auto max-h-[160px] pr-1 scrollbar-thin">
+          <div className="space-y-4 animate-fade-in overflow-y-auto pr-1 scrollbar-thin max-h-[290px]">
             <div className="border-l-2 border-[#89b4fa] pl-3">
               <div className="flex justify-between text-sm font-bold text-[#89b4fa]">
                 <span>TH Köln — Technische Informatik</span>
                 <span>Abschluss: B.Sc. (i.A.)</span>
               </div>
-              <p className="text-xs text-zinc-500 mb-1">Verkürzte Regelstudienzeit</p>
-              <p className="text-sm text-[#bac2de]">
+              <p className="text-xs text-zinc-500 mb-1">Verkürzte Regelstudienzeit • Ø ~1,6</p>
+              <p className="text-sm text-[#bac2de] mb-3">
                 Die Regelstudienzeit wurde erfolgreich von 7 auf 6 Semester verkürzt. Der Bachelorabschluss steht unmittelbar bevor.
               </p>
+
+              {/* Grade Highlights */}
+              <div className="bg-[#11111b] border border-[#45475a] rounded-sm p-2 mb-2 font-mono">
+                <p className="text-xs text-[#a6e3a1] mb-1.5 font-bold">
+                  ┌─ 📊 Notenspiegel ───────────────────┐
+                </p>
+                <div className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5 text-xs">
+                  <span className="text-[#f9e2af]">Datenbanken 1</span>
+                  <span className="text-right text-[#a6e3a1]">1,0</span>
+                  <span className="text-[#f9e2af]">Signalverarbeitung</span>
+                  <span className="text-right text-[#a6e3a1]">1,0</span>
+                  <span className="text-[#f9e2af]">Netze &amp; Protokolle</span>
+                  <span className="text-right text-[#a6e3a1]">1,0</span>
+                  <span className="text-[#f9e2af]">Netzsicherheit &amp; Automation</span>
+                  <span className="text-right text-[#a6e3a1]">1,0</span>
+                  <span className="text-[#f9e2af]">Software Management</span>
+                  <span className="text-right text-[#a6e3a1]">1,0</span>
+                  <span className="text-[#f9e2af]">Maschinelles Lernen</span>
+                  <span className="text-right text-[#a6e3a1]">1,3</span>
+                  <span className="text-[#f9e2af]">ML Operations</span>
+                  <span className="text-right text-[#a6e3a1]">1,3</span>
+                  <span className="text-[#f9e2af]">Formale Sprachen &amp; Automaten</span>
+                  <span className="text-right text-[#a6e3a1]">1,3</span>
+                </div>
+                <div className="mt-1.5 pt-1.5 border-t border-[#45475a] flex justify-between text-xs">
+                  <span className="text-[#6c7086]">Durchschnitt (gewichtet)</span>
+                  <span className="text-[#a6e3a1] font-bold">~1,6</span>
+                </div>
+                <p className="text-xs text-[#6c7086] mt-0.5">
+                  └────────────────────────────────────┘
+                </p>
+              </div>
+
+              <a
+                href="/notenspiegel.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#89b4fa]/10 text-[#89b4fa] border border-[#89b4fa]/30 rounded-sm hover:bg-[#89b4fa]/20 transition-colors cursor-pointer font-mono"
+              >
+                📜 Vollständigen Notenspiegel öffnen
+              </a>
             </div>
 
             <div className="border-l-2 border-[#89b4fa] pl-3">
@@ -172,13 +213,15 @@ function InteractiveTerminal() {
 
       let response = ''
       if (cmd === 'help') {
-        response = 'Commands: whoami, experience, education, contact, clear, matrix'
+        response = 'Commands: whoami, experience, education, notenspiegel, contact, clear, matrix'
       } else if (cmd === 'whoami') {
         response = 'Mohamad Nour Hallak - 21 J. alt, Technische Informatik an der TH Köln, AI Dev.'
       } else if (cmd === 'experience') {
         response = 'REWE digital (Business Analyst), Siemens Mobility (AI Developer), TH Köln (CCNA Tutor).'
       } else if (cmd === 'education') {
         response = 'TH Köln - B.Sc. Technische Informatik (Regelstudienzeit verkürzt auf 6 Semester) & Abitur am Gymnasium der Stadt Kerpen (2023).'
+      } else if (cmd === 'notenspiegel') {
+        response = '📊 Notenspiegel TH Köln: Ø ~1,6 | Topnoten (1,0): Datenbanken 1, Signalverarbeitung, Netze & Protokolle, Netzsicherheit & Automation, Software Management | PDF: /notenspiegel.pdf'
       } else if (cmd === 'contact') {
         response = 'E-Mail: mohamadnourhalak@gmail.com | LinkedIn: Mohamad Nour Hallak'
       } else if (cmd === 'clear') {

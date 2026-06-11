@@ -38,7 +38,7 @@ function Shell() {
       case 'memory':
         return { width: 620, height: 620 }
       case 'about':
-        return { width: 700, height: 480 }
+        return { width: 700, height: 560 }
       default:
         return { width: 600, height: 400 }
     }
