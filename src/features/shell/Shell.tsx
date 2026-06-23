@@ -34,7 +34,7 @@ function Shell() {
       case 'skills':
         return { width: 900, height: 600 }
       case 'projects':
-        return { width: 750, height: 500 }
+        return { width: 850, height: 580 }
       case 'memory':
         return { width: 620, height: 620 }
       case 'about':

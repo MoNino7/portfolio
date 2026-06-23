@@ -14,7 +14,7 @@ export function AboutWindow() {
             Mohamad Nour Hallak
           </h2>
           <p className="text-sm font-mono text-[#89b4fa]">
-            AI Developer // Student (Technische Informatik) // CCNA Tutor
+            AI Solutions Engineer
           </p>
           <div className="flex flex-wrap gap-2 justify-center md:justify-start pt-1.5">
             <span className="px-2 py-0.5 text-xs bg-[#cba6f7]/10 text-[#cba6f7] border border-[#cba6f7]/30 rounded-sm font-mono">
@@ -22,9 +22,6 @@ export function AboutWindow() {
             </span>
             <span className="px-2 py-0.5 text-xs bg-[#f9e2af]/10 text-[#f9e2af] border border-[#f9e2af]/30 rounded-sm font-mono">
               Cologne, Germany
-            </span>
-            <span className="px-2 py-0.5 text-xs bg-[#94e2d5]/10 text-[#94e2d5] border border-[#94e2d5]/30 rounded-sm font-mono">
-              Calisthenics
             </span>
           </div>
         </div>
@@ -78,10 +75,10 @@ export function AboutWindow() {
           <div className="space-y-4 animate-fade-in overflow-y-auto max-h-[160px] pr-1 scrollbar-thin">
             <div className="border-l-2 border-[#cba6f7] pl-3">
               <div className="flex justify-between text-sm font-bold text-[#cba6f7]">
-                <span>Siemens Mobility — AI Developer</span>
+                <span>Siemens Mobility — AI Solutions Engineer</span>
                 <span>Werkstudent // R&D</span>
               </div>
-              <p className="text-xs text-zinc-500 mb-1">Entwicklung von RAG- & LLM-Tools</p>
+              <p className="text-xs text-zinc-500 mb-1">Entwicklung von Agents- & LLM-Tools</p>
               <p className="text-sm text-[#bac2de]">
                 Entwicklung von MVP-Prototypen für reallife usecases von mechanical engineers zur Effizienzsteigerung in Engineering-Prozessen (von Anforderungsanalyse bis Cloud-Hosting).
               </p>
